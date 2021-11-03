@@ -12,7 +12,7 @@ git init --initial-branch=main
 
 echo $(cat .env.example) >> .env
 
-if [ -x "$(command -v flutter)" ]; then
+if ! [ -x "$(command -v flutter)" ]; then
   echo "Flutter SDK wasn't found in your PATH."
 else
   echo "[3/4] >> Installing dependencies."
