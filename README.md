@@ -9,33 +9,31 @@
 - [Equatable](https://pub.dev/packages/equatable)
 - [Json Annotation](https://pub.dev/packages/json_annotation)
 
-## :wrench: Usage
-
-1. Clone the repository
+## :fire: Starting a new project
 
 ```sh
-$ git clone https://github.com/naveteam/flutter-boilerplate.git
-# With SSH
-$ git clone git@github.com:naveteam/flutter-boilerplate.git
+$ sh -c "$(curl -fsSL https://raw.githubusercontent.com/naveteam/flutter-boilerplate/main/setup.sh)"
 ```
 
-2. Install all dependencies
+## :wrench: Usage
+
+1. Install all dependencies
 
 ```sh
 $ flutter pub get
 ```
 
-3. Create .env file at the root with key:value pairs corresponding to `.env.example`
+2. Create .env file at the root with key:value pairs corresponding to `.env.example`
 
 > It's a required step since we use code-generation tool to generate helper classes for environment variables.
 
-4. Run code-generation tool
+3. Run code-generation tool
 
 ```sh
 $ flutter pub run build_runner build
 ```
 
-5. Start coding :smile:
+4. Start coding :smile:
 
 ### :raised_hand: Wait a minute
 
