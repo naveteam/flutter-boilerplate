@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/app/presentation/widgets/authentication_form.dart';
-import 'package:flutter_boilerplate/app/viewmodel/authentication/authentication_viewmodel.dart';
+import 'package:flutter_boilerplate/app/presentation/viewmodel/authentication/authentication_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 class AuthenticationScreen extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/app/domain/http/exceptions/unauthorized_exception.dart';
 import 'package:flutter_boilerplate/app/domain/repositories/authentication_repository.dart';
-import 'package:flutter_boilerplate/app/viewmodel/authentication/authentication_state.dart';
+import 'package:flutter_boilerplate/app/presentation/viewmodel/authentication/authentication_state.dart';
 
 abstract class AuthenticationViewModel with ChangeNotifier {
   AuthenticationState get uiState;
