@@ -1,13 +1,12 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_boilerplate/app/domain/constants/shared_preferences.dart';
 import 'package:flutter_boilerplate/app/domain/constants/status_code.dart';
 import 'package:flutter_boilerplate/app/domain/http/exceptions/unauthorized_exception.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_boilerplate/app/domain/persistence/credentials_persistence.dart';
 
 class AuthenticationInterceptor extends Interceptor {
-  AuthenticationInterceptor(this._lazySharedPreferences);
+  AuthenticationInterceptor(this._credentialsPersistence);
 
-  final Future<SharedPreferences> _lazySharedPreferences;
+  final CredentialsPersistence _credentialsPersistence;
 
   @override
   void onRequest(
@@ -16,9 +15,7 @@ class AuthenticationInterceptor extends Interceptor {
   ) async {
     final Map<String, dynamic> headersWithAuthorizationKey = {
       ...options.headers,
-      'Authorization': (await _lazySharedPreferences).getString(
-        SharedPreferencesConstants.token,
-      )
+      'Authorization': await _credentialsPersistence.getCredentials()
     };
     return handler.next(options.copyWith(headers: headersWithAuthorizationKey));
   }

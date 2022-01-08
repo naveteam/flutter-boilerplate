@@ -8,15 +8,13 @@ import 'package:flutter_boilerplate/env/env.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ApplicationContainer {
-  static final Dio apiClient = Dio(BaseOptions(baseUrl: Env.baseUrl))
+  static final Dio client = Dio(BaseOptions(baseUrl: Env.baseUrl))
     ..interceptors.addAll([
-      AuthenticationInterceptor(
-        SharedPreferences.getInstance(),
-      ),
+      AuthenticationInterceptor(credentialsPersistence),
     ]);
 
   static final AuthenticationService authenticationService =
-      AuthenticationServiceImpl(apiClient);
+      AuthenticationServiceImpl(client);
 
   static final CredentialsPersistence credentialsPersistence =
       CredentialsPersistenceImpl(SharedPreferences.getInstance());
