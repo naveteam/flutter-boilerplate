@@ -3,7 +3,7 @@ import 'package:flutter_boilerplate/app/domain/http/interceptors/authentication_
 import 'package:flutter_boilerplate/app/domain/http/services/authentication_service.dart';
 import 'package:flutter_boilerplate/app/domain/persistence/credentials_persistence.dart';
 import 'package:flutter_boilerplate/app/domain/repositories/authentication_repository.dart';
-import 'package:flutter_boilerplate/app/presentation/viewmodel/authentication/authentication_viewmodel.dart';
+import 'package:flutter_boilerplate/app/presentation/viewmodels/authentication/authentication_viewmodel.dart';
 import 'package:flutter_boilerplate/env/env.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
