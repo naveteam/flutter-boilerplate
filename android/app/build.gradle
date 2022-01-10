@@ -44,10 +44,25 @@ android {
     }
 
     buildTypes {
+        debug {
+            debuggable true
+            applicationIdSuffix '.debug'
+            signingConfig signingConfigs.debug
+        }
+
+        staging {
+            initWith release
+            applicationIdSuffix '.releaseStaging'
+            // TODO: Add your own signing config for the staging build.
+            signingConfig signingConfigs.debug
+        }
+
         release {
             // TODO: Add your own signing config for the release build.
             // Signing with the debug keys for now, so `flutter run --release` works.
+            minifyEnabled true
             signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt')
         }
     }
 }
