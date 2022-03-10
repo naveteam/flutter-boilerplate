@@ -1,31 +1,36 @@
-import 'package:flutter_boilerplate/app/domain/constants/shared_preferences.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_boilerplate/app/domain/constants/secure_storage_constants.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class CredentialsPersistence {
   Future<String?> getCredentials();
-  Future<bool> storeCredentials({required String token});
-  Future<bool> clearCredentials();
+  Future<void> storeCredentials({required String token});
+  Future<void> clearCredentials();
 }
 
 class CredentialsPersistenceImpl implements CredentialsPersistence {
-  const CredentialsPersistenceImpl(this._lazySharedPreferences);
+  const CredentialsPersistenceImpl(this._secureStorage);
 
-  final Future<SharedPreferences> _lazySharedPreferences;
+  final FlutterSecureStorage _secureStorage;
 
   @override
   Future<String?> getCredentials() async {
-    return (await _lazySharedPreferences)
-        .getString(SharedPreferencesConstants.token);
+    return await _secureStorage.read(
+      key: SecureStorageConstants.token,
+    );
   }
 
   @override
-  Future<bool> storeCredentials({required String token}) async {
-    return await (await _lazySharedPreferences)
-        .setString(SharedPreferencesConstants.token, token);
+  Future<void> storeCredentials({required String token}) async {
+    return await _secureStorage.write(
+      key: SecureStorageConstants.token,
+      value: token,
+    );
   }
 
   @override
-  Future<bool> clearCredentials() async {
-    return await (await _lazySharedPreferences).clear();
+  Future<void> clearCredentials() async {
+    return await _secureStorage.delete(
+      key: SecureStorageConstants.token,
+    );
   }
 }
