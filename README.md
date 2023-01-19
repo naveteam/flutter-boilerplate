@@ -4,8 +4,9 @@
 
 - [Dio](https://pub.dev/packages/dio)
 - [Shared Preferences](https://pub.dev/packages/shared_preferences)
+- [Flutter Secure Storage](https://pub.dev/packages/flutter_secure_storage)
 - [Provider](https://pub.dev/packages/provider)
-- [Envify](https://pub.dev/packages/envify)
+- [Flutter DotEnv](https://pub.dev/packages/flutter_dotenv)
 - [Equatable](https://pub.dev/packages/equatable)
 - [Json Annotation](https://pub.dev/packages/json_annotation)
 
