@@ -1,20 +1,14 @@
-import 'package:dio/dio.dart';
+import 'package:flutter_boilerplate/app/data/source/local/auth.dart';
+import 'package:flutter_boilerplate/app/di/dio_module.dart';
 import 'package:flutter_boilerplate/app/data/source/remote/todos.dart';
+import 'package:flutter_boilerplate/app/di/secure_storage_module.dart';
 
 abstract class DataSourcesModule {
-  static BaseOptions get jsonPlaceholderClientOptions {
-    return BaseOptions(
-      baseUrl: "https://jsonplaceholder.typicode.com/",
-      contentType: "application/json",
-      responseType: ResponseType.json,
-    );
-  }
-
-  static Dio get jsonPlaceholderClient {
-    return Dio(jsonPlaceholderClientOptions);
-  }
-
   static TodosRemoteDataSource get todosRemoteDataSource {
-    return TodosRemoteDataSourceImpl(jsonPlaceholderClient);
+    return TodosRemoteDataSourceImpl(DioModule.jsonPlaceholderClient);
+  }
+
+  static AuthLocalDataSource get authLocalDataSource {
+    return AuthLocalDataSourceImpl(SecureStorageModule.storage);
   }
 }
