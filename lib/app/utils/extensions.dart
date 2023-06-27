@@ -4,13 +4,9 @@ extension BrightnessExtensions on Brightness {
   bool get isDarkModeEnabled => this == Brightness.dark;
 
   Brightness get inverse {
-    switch (this) {
-      case Brightness.dark:
-        return Brightness.light;
-      case Brightness.light:
-        return Brightness.dark;
-      default:
-        return Brightness.light;
-    }
+    return switch (this) {
+      Brightness.dark => Brightness.light,
+      Brightness.light => Brightness.dark,
+    };
   }
 }
