@@ -1,6 +1,10 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_boilerplate/app/data/entities/todo.dart';
 
+part 'todos_state.g.dart';
+
+@CopyWith()
 class TodosState extends Equatable {
   final bool isGettingItems;
   final bool hasFailedToGetItems;
@@ -20,17 +24,5 @@ class TodosState extends Equatable {
       hasFailedToGetItems,
       items,
     ];
-  }
-
-  TodosState copyWith({
-    bool? isGettingItems,
-    bool? hasFailedToGetItems,
-    List<Todo>? items,
-  }) {
-    return TodosState(
-      isGettingItems: isGettingItems ?? this.isGettingItems,
-      hasFailedToGetItems: hasFailedToGetItems ?? this.hasFailedToGetItems,
-      items: items ?? this.items,
-    );
   }
 }
